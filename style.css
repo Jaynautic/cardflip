@@ -10,13 +10,33 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
     gap: 60px;
     background-color: darkgreen;
 }
 
 .title{
     color: #fff;
+}
+
+.hitButton {
+    text-align: center;
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 2px solid black;
+    background-color: white;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.standButton {
+    text-align: center;
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 2px solid black;
+    background-color: white;
+    font-size: 18px;
+    font-weight: 800;
 }
 
 .card-container {
