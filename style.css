@@ -78,15 +78,15 @@ body {
 }
 
 #cardfacea {
-    background: no-repeat url("/images/cardfronta.png");
+    background: no-repeat url("images/cardfronta.png");
 }
 
 #cardface2 {
-    background: no-repeat url("/images/cardfront2.png");
+    background: no-repeat url("images/cardfront2.png");
 }
 
 #cardface3 {
-    background: no-repeat url("/images/cardfront3.png");
+    background: no-repeat url("images/cardfront3.png");
 }
 
 #cardface4 {
