@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    gap: 60px;
+    gap: 40px;
     background-color: darkgreen;
 }
 
@@ -53,7 +53,29 @@ body {
     perspective: 1000px;
 }
 
+.dealer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.dealer-card {
+    position: relative;
+    width: 133px;
+    height: 186px;
+    perspective: 1000px;
+}
+
 .card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.dealer-card-inner {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -73,58 +95,87 @@ body {
     background: no-repeat url("images/cardback.png");
 }
 
+.dealer-card-front, .dealer-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: no-repeat url("images/cardback.png");
+    background-size: contain;
+}
+
 .card-back {
     transform: rotateY(-180deg);
 }
 
+.dealer-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(-180deg);
+}
+
 #cardfacea {
-    background: no-repeat url("./images/cardfronta.png");
+    background: no-repeat url("/images/cardfronta.png");
+    background-size: contain;
 }
 
 #cardface2 {
-    background: no-repeat url("./images/cardfront2.png");
+    background: no-repeat url("/images/cardfront2.png");
+    background-size: contain;
 }
 
 #cardface3 {
-    background: no-repeat url("./images/cardfront3.png");
+    background: no-repeat url("/images/cardfront3.png");
+    background-size: contain;
 }
 
 #cardface4 {
-    background: no-repeat url("./images/cardfront4.png");
+    background: no-repeat url("images/cardfront4.png");
+    background-size: contain;
 }
 
 #cardface5 {
-    background: no-repeat url("./images/cardfront5.png");
+    background: no-repeat url("images/cardfront5.png");
+    background-size: contain;
 }
 
 #cardface6 {
-    background: no-repeat url("./images/cardfront6.png");
+    background: no-repeat url("images/cardfront6.png");
+    background-size: contain;
 }
 
 #cardface7 {
-    background: no-repeat url("./images/cardfront7.png");
+    background: no-repeat url("images/cardfront7.png");
+    background-size: contain;
 }
 
 #cardface8 {
-    background: no-repeat url("./images/cardfront8.png");
+    background: no-repeat url("images/cardfront8.png");
+    background-size: contain;
 }
 
 #cardface9 {
-    background: no-repeat url("./images/cardfront9.png");
+    background: no-repeat url("images/cardfront9.png");
+    background-size: contain;
 }
 
 #cardface10 {
-    background: no-repeat url("./images/cardfront10.png");
+    background: no-repeat url("images/cardfront10.png");
+    background-size: contain;
 }
 
 #cardfacej {
-    background: no-repeat url("./images/cardfrontj.png");
+    background: no-repeat url("images/cardfrontj.png");
+    background-size: contain;
 }
 
 #cardfaceq {
-    background: no-repeat url("./images/cardfrontq.png");
+    background: no-repeat url("images/cardfrontq.png");
+    background-size: contain;
 }
 
 #cardfacek {
-    background: no-repeat url("./images/cardfrontk.png");
+    background: no-repeat url("images/cardfrontk.png");
+    background-size: contain;
 }
