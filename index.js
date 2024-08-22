@@ -24,8 +24,8 @@ for (let i = 0; i < 2; i++) {
   const cardValue = cardSize[ranNum];
   dealerValues.push(cardId);
 
-  let newCard = `<div class="dealer-card-inner" id="dealerCardinner${cardId}-${dealerIndex}" onclick="resultDealerCard('${cardId}','${dealerIndex}')">
-                  <div class="dealer-card-front"></div>
+  let newCard = `<div class="dealer-card-inner" id="dealerCardinner${cardId}-${dealerIndex}">
+                  <div class="card-front"></div>
                   <div class="dealer-card-back" id="cardface${cardId}"></div>
                 </div>`;
 
@@ -44,11 +44,9 @@ for (let i = 0; i < 2; i++) {
 
   if (dealerIndex == 1) {
     document.getElementById(`dealerCardinner${cardId}-${dealerIndex - 1}`).style.transform = "rotateY(180deg)";
-    document.getElementById("heading").innerHTML = `The dealer's hand starts with a ${cardValue}.`;
+    document.getElementById("heading").innerHTML = `The dealer's hand starts with ${cardValue}.`;
   }
 }
-
-// document.getElementById("heading").innerHTML = `The dealer's hand starts at ${dealerHand}.`;
 
 
 
@@ -57,12 +55,15 @@ for (let i = 0; i < 2; i++) {
   const cardId = cardList[ranNum];
   cardValues.push(cardSize[ranNum]);
   cardHand.push(cardId);
-  let newCard = `<div class="card-inner" id="cardinner${cardId}-${i+1}" onclick="resultCard('${cardId}','${i+1}')">
+  let newCard = `<div class="card-inner" id="cardinner${cardId}-${i+1}">
                   <div class="card-front"></div>
                   <div class="card-back" id="cardface${cardId}"></div>
                 </div>`;
   document.getElementById(`card${i+1}`).innerHTML = newCard;
   numOfCards++;
+  setTimeout(function(){
+    resultCard(cardId, i+1);
+  }, 200)
 }
 
 
@@ -91,7 +92,7 @@ function hitFunction() {
   cardHand.push(cardId);
   numOfCards++;
 
-  let newCard = `<div class="card-inner" id="cardinner${cardId}-${numOfCards}" onclick="resultCard('${cardId}','${numOfCards}')">
+  let newCard = `<div class="card-inner" id="cardinner${cardId}-${numOfCards}">
                   <div class="card-front"></div>
                   <div class="card-back" id="cardface${cardId}"></div>
                 </div>`;
@@ -106,11 +107,13 @@ function hitFunction() {
 
   document.getElementById(`card${numOfCards}`).innerHTML = newCard;
 
-  
+  setTimeout(function(){
+    resultCard(cardId, numOfCards);
+  }, 200)
 
-  console.log(cardValues);
-  console.log(cardHand);
-  console.log(numOfCards)
+  if (numOfCards == 5) {
+    standFunction();
+  }
 }
 
 
@@ -124,6 +127,7 @@ function standFunction() {
     dealerValues.push(cardId);
   
     let newCard = `<div class="dealer-card-inner" id="dealerCardinner${cardId}-${dealerIndex}">
+                    <div class="card-front"></div>
                     <div class="dealer-card-back" id="cardface${cardId}"></div>
                   </div>`;
   
@@ -140,7 +144,7 @@ function standFunction() {
     dealerHand = dealerHand + cardValue;
     dealerIndex++
 
-    document.getElementById(`dealerCardinner${cardId}-${dealerIndex - 1}`).style.transform = "rotateY(180deg)";
+    document.getElementById(`dealerCardinner${cardId}-${dealerIndex - 1}`).style.transform = "rotateY(0deg)";
 
   }
 
@@ -159,16 +163,19 @@ function standFunction() {
     document.getElementById("result").innerHTML = `You hand is ${cardSum}. You lost!`;
   }
 
+  setTimeout(function(){
+    for (let i = 0; i < dealerValues.length; i++) {
+      document.getElementById(`dealerCardinner${dealerValues[i]}-${i}`).style.transform = "rotateY(180deg)";
+    }
+  }, 100)
 
-  for (let i = 0; i < dealerValues.length; i++) {
-    document.getElementById(`dealerCardinner${dealerValues[i]}-${i}`).style.transform = "rotateY(180deg)";
-  }
-
-  for (let i = 1; i < (cardHand.length+1); i++) {
-    let dataCard = cardHand[i-1];
-    let numberOfCards = i;
-    resultCard(dataCard, numberOfCards);
-  }
+  setTimeout(function(){
+    for (let i = 1; i < (cardHand.length+1); i++) {
+      let dataCard = cardHand[i-1];
+      let numberOfCards = i;
+      resultCard(dataCard, numberOfCards);
+    }
+  }, 100)
 
   document.getElementById("heading").innerHTML = `The dealer's hand is ${dealerHand}.`;
 }
