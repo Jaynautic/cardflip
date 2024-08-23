@@ -111,7 +111,7 @@ function hitFunction() {
     resultCard(cardId, numOfCards);
   }, 200)
 
-  if (numOfCards == 5) {
+  if (numOfCards == 5 || cardValues.reduce((a, b) => a + b, 0) > 21) {
     standFunction();
   }
 }
@@ -157,7 +157,7 @@ function standFunction() {
   }
   cardSum = cardValues.reduce((a, b) => a + b, 0);
 
-  if ((cardSum <= 21 && cardSum > dealerHand) || (cardSum <= 21 && dealerHand > 21)) {
+  if (cardSum <= 21 && (cardSum > dealerHand || dealerHand > 21)) {
     document.getElementById("result").innerHTML = `Your hand is ${cardSum}. You won!`;
   } else {
     document.getElementById("result").innerHTML = `You hand is ${cardSum}. You lost!`;
@@ -178,4 +178,13 @@ function standFunction() {
   }, 100)
 
   document.getElementById("heading").innerHTML = `The dealer's hand is ${dealerHand}.`;
+
+    document.getElementById(`hitButton`).style.visibility = "hidden";
+    document.getElementById(`standButton`).style.visibility = "hidden";
+    document.getElementById(`refreshButton`).style.visibility = "visible";
+
+}
+
+function refreshFunction() {
+  location.reload();
 }
